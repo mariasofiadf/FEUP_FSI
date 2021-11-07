@@ -23,7 +23,6 @@
 - De acordo com a equipa de Bad Packets, que explorou esta vulnerabilidade, 3012 IPv4 hosts unicos, em 66 países, eram vulneráveis a CVE-2020-5902 
 - Foram descobertos em 635 sistemas autónomos esta vulnerabilidade. Estes eram instituições governamentais, bancos, faculdades, hospitais e grandes empresas, entre outros.
 - Ataques que explorem esta vulnerabilidade podem também permitir que atacantes ganhem permissões nas redes afetadas, podendo assim distribuir <em>ransomware<em>.
-- item4
 
 ## Fontes
 
