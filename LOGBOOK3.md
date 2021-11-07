@@ -27,10 +27,10 @@
 
 ## Fontes
 
-https://research.nccgroup.com/2020/07/12/understanding-the-root-cause-of-f5-networks-k52145254-tmui-rce-vulnerability-cve-2020-5902/
-https://support.f5.com/csp/article/K52145254
-https://swarm.ptsecurity.com/rce-in-f5-big-ip/
-https://badpackets.net/over-3000-f5-big-ip-endpoints-vulnerable-to-cve-2020-5902/
-https://www.criticalstart.com/f5-big-ip-remote-code-execution-exploit-cve-2020-5902/
+- https://research.nccgroup.com/2020/07/12/understanding-the-root-cause-of-f5-networks-k52145254-tmui-rce-vulnerability-cve-2020-5902/
+- https://support.f5.com/csp/article/K52145254
+- https://swarm.ptsecurity.com/rce-in-f5-big-ip/
+- https://badpackets.net/over-3000-f5-big-ip-endpoints-vulnerable-to-cve-2020-5902/
+- https://www.criticalstart.com/f5-big-ip-remote-code-execution-exploit-cve-2020-5902/
 
 
