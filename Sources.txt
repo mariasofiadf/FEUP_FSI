@@ -1,0 +1,75 @@
+
+https://research.nccgroup.com/2020/07/12/understanding-the-root-cause-of-f5-networks-k52145254-tmui-rce-vulnerability-cve-2020-5902/
+CVE-2020-5902 was disclosed on July 1st, 2020 by F5 Networks in K52145254 as a CVSS 10.0 remote code execution vulnerability in the Big-IP administrative interface
+
+https://support.f5.com/csp/article/K52145254
+This vulnerability allows for unauthenticated attackers, or authenticated users, with network access to the Configuration utility, through the BIG-IP management port and/or self IPs, to execute arbitrary system commands, create or delete files, disable services, and/or execute arbitrary Java code. This vulnerability may result in complete system compromise. The BIG-IP system in Appliance mode is also vulnerable. This issue is not exposed on the data plane; only the control plane is affected.
+K52145254: TMUI RCE vulnerability CVE-2020-5902
+The Traffic Management User Interface (TMUI), also referred to as the Configuration utility, has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
+Product-> BIG-IP (LTM, AAM, Advanced WAF, AFM, Analytics, APM, ASM, DDHD, DNS, FPS, GTM, Link Controller, PEM, SSLO, CGNAT)
+
+https://swarm.ptsecurity.com/rce-in-f5-big-ip/
+The CVE-2020-5902 vulnerability has been assigned a CVSS score of 10, the highest possible. According to the Threat Intelligence Services of Positive Technologies, before the fixes there were more than 8,000 devices available on the Internet and vulnerable to this issue.
+Conclusion
+
+We were able to get Remote Command Execution on the F5 Big-IP appliance via the next three easy steps:
+
+    Discovering a misconfiguration of the Apache HTTP Server and Apache Tomcat
+    Discovering the use of default credentials for HSQLDB
+    Discovering questionable static methods in the F5 Big-IP TMUI libraries
+
+The timeline:
+
+    1 April, 2020 — Reported to F5 Networks
+    3 April, 2020 — Vulnerability reproduced by F5
+    1 July , 2020 — Security Advisory and Fixes have been released
+
+
+https://badpackets.net/over-3000-f5-big-ip-endpoints-vulnerable-to-cve-2020-5902/
+
+
+July 5, 2020 by Troy Mursch
+
+On Sunday, July 5, 2020, our honeypots detected opportunistic mass scanning activity originating from multiple hosts targeting F5 BIG-IP servers vulnerable to CVE-2020-5902. This critical vulnerability allows unauthenticated remote attackers to execute arbitrary commands on the targeted server.
+
+How many hosts are vulnerable to CVE-2020-5902?
+
+Using data provided by BinaryEdge, we scanned 8,204 F5 BIG-IP servers to determine which were vulnerable. Our scans found a total of 3,012 unique IPv4 hosts worldwide vulnerable to CVE-2020-5902.
+
+
+Hosts vulnerable to CVE-2020-5902 were found in 66 countries around the world.
+
+1237 Total Vulnerable Hosts no EUA, 496 na China e 144 no Taiwan, etc.
+
+July 5, 2020 by Troy Mursch
+
+On Sunday, July 5, 2020, our honeypots detected opportunistic mass scanning activity originating from multiple hosts targeting F5 BIG-IP servers vulnerable to CVE-2020-5902. This critical vulnerability allows unauthenticated remote attackers to execute arbitrary commands on the targeted server.
+
+How many hosts are vulnerable to CVE-2020-5902?
+
+Using data provided by BinaryEdge, we scanned 8,204 F5 BIG-IP servers to determine which were vulnerable. Our scans found a total of 3,012 unique IPv4 hosts worldwide vulnerable to CVE-2020-5902.
+
+No sensitive information was disclosed or recorded during our scans as we only sent a HTTP HEAD request to confirm the vulnerability.
+Where are the vulnerable servers located?
+
+Hosts vulnerable to CVE-2020-5902 were found in 66 countries around the world.
+
+Worldwide_CVE-2020-5902_Total_Vulnerable_Hosts
+
+This interactive map shows the total vulnerable hosts found per country. Overall, the most vulnerable F5 servers were located in the United States.
+What type of organizations are affected by CVE-2020-5902?
+
+635 unique autonomous systems (network providers) were found to have vulnerable F5 endpoints on their network. We’ve discovered this vulnerability currently affects:
+
+    Government agencies
+    Public universities and schools
+    Hospitals and healthcare providers
+    Major financial and banking institutions
+    Fortune 500 companies
+
+
+    How is CVE-2020-5902 exploited and what is the risk?
+
+The Traffic Management User Interface (TMUI), also known as the Configuration utility, used to manage F5 servers has a remote code execution (RCE) vulnerability. This vulnerability allows for unauthenticated attackers with network access to the vulnerable F5 server to execute arbitrary system commands, create or delete files, disable services, and/or execute arbitrary Java code.
+
+Further exploitation of this vulnerability can allow threat actors to gain a foothold inside the targeted networks and conduct malicious activity, such as spreading ransomware. Proof-of-concept (PoC) code demonstrating the exploit has been published publicly to GitHub, Twitter, and other platforms.
