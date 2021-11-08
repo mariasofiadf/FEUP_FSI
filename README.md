@@ -1,9 +1,8 @@
-
 Breve descrição do grupo
 
-* Turno: [LM]XX
-* Grupo: YY
+* Turno: L02
+* Grupo: 04
 * Alunos:
-    - Aluno1 upZZZZZ 
-    - Aluno2 upZZZZZ
-    - Aluno3 upZZZZZ
+    - Alberto José Ribeiro da Cunha upZZZZZ 
+    - Ana Rita Antunes Ramada up201904565
+    - Maria Sofia Diogo Figueiredo up201904675
