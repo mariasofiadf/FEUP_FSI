@@ -1,6 +1,6 @@
 # Trabalho realizado na Semana #4
 
-## Seed Lab
+## **Seed Labs**
 
 ## Tarefa 1
 
@@ -175,7 +175,7 @@
     #id -u
     0
 
-## CTF
+## **CTF**
 
 ## Reconhecimento
 
