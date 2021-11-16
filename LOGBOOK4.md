@@ -4,13 +4,31 @@
 
 ## Tarefa 1
 
- - Tal como esperado foi possível criar, observar e apagar variáveis de ambiente.
+  **Objetivo:** Manipular variáveis de ambiente
+
+  **Conclusão:** Foi possível criar, observar e apagar variáveis de ambiente com facilidade através da shell <em>default<em>.
 
 ## Tarefa 2
 
- - Passo 1 – As variáveis de ambiente são impressas para o ficheiro pelo processo filho.
- - Passo 2 – As variáveis de ambiente são impressas para o ficheiro pelo processo pai.
- - Passo 3 – Quando um processo filho é criado através de um fork, este herda as variáveis de ambiente do processo pai. Assim, a execução dos dois primeiros Passos, levam ao mesmo output. 
+  **Objetivo:** Estudar a passagem de variáveis de ambiente de um processo para o seu filho
+
+### Passo 1
+  **Procedimento:** Compilar e correr "myprintenv.c":<br>
+  ![myprintenv](/images/logbook4/myprintenv.png)
+  **Conclusão:** As variáveis de ambiente são impressas para o ficheiro pelo processo filho.
+
+  
+### Passo 2
+  **Procedimento:** Alterar o código de myprintenv.c, comentando o printenv() do processo filho e descomentando o printenv() do processo pai. Compilar e correr "myprintenv.c":<br>
+  ![myprintenv](/images/logbook4/myprintenv2.png)
+  **Conclusão:** As variáveis de ambiente são impressas para o ficheiro pelo processo pai.
+
+
+### Passo 3
+  **Objetivo:** Comparar as diferenças entre as execuções nos passos 1 e 2.
+
+  **Conclusão:** Quando um processo filho é criado através de um fork, este herda as variáveis de ambiente do processo pai. Assim, a execução dos dois primeiros passos, levam ao mesmo output.
+ 
 
 ## Tarefa 3
  - Passo 1 - Não há qualquer output ao correr o programa.
