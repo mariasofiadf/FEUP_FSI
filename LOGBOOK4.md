@@ -42,3 +42,25 @@ Tal como esperado, a variáveis de ambiente do programa que chama system() são 
  - Como o programa original corre como root e chama o nosso programa ls, este segundo também irá correr como root. Sendo assim é possível obter controlo sobre a máquina e correr o que desejarmos.
  
  - Nota: é possível verificar que, quando chamado pelo programa original (que tem SetUID ativo), /home/seed/ls corre como root, usando a função geteuid().
+
+## CTF
+
+## Reconhecimento
+
+ - Wordpress versão 5.8.1
+ - WooCommerce plugin versão 5.7.1
+ - Booster for WooCommerce plugin 5.4.3
+ - Utilizadores: admin e Orval Sanford
+
+## Pesquisa por vulnerabilidades e Escolha
+
+Ao pesquisar por vulnabilidades para este software e respetivos plugins, nas versões em que se encontram, descobrimos uma vulnerabilidade (CVE-2021-34646) no plugin "Booster for WooCommerce", que permite a um atacante que se autentique como qualquer utilizador (incluindo admin).
+
+## Encontrar um exploit e explorar a vulnerabilidade
+
+Encontramos um exploit em https://www.wordfence.com/blog/2021/08/critical-authentication-bypass-vulnerability-patched-in-booster-for-woocommerce/. <br> O exploit consiste em:
+  1. Enviar um request para o <em>home<em> URL com o wcj_user_id a 1, pois esperado que o id de admin seja 1, que é a conta a queremos acesso.
+  2. Como o código de verificação para recuperar conta é apenas um hash md5 da hora do pedido, é possível criar o URL que verifica o email.
+  3. Através do seguinte script php, geramos vários URL com a hora próxima (diferença de segundos) da hora do pedido, para garantir que um deles tem a hora exata do pedido e, então, o link que verifica o email: <br>
+  ![PHP script](/images/logbook4/php.png)
+  4. Após aceder ao URL de confirmação de email, passamos a ter acesso como admin.
