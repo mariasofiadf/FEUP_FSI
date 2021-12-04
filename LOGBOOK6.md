@@ -188,7 +188,7 @@ Para obter este endereço basta utilizar o gdb do seguinte modo.
 
 ## Posição da stack onde se encontra o buffer
 
-Ao inserir no programa o input "AAAA%x" percebemos que o buffer se encontra no topo da stack
+Ao inserir no programa o input "AAAA%x" percebemos que o buffer é o primeiro valor que o printf vai buscar.
 
 ```
     [12/04/21]seed@VM:~/.../CTF6.1$ ./program 
@@ -286,7 +286,7 @@ Para obter este endereço basta utilizar o gdb do seguinte modo.
 
 ## Posição da stack onde se encontra o buffer
 
-Ao inserir no programa o input "AAAA%x" percebemos que o buffer se encontra no topo da stack
+Ao inserir no programa o input "AAAA%x" percebemos que o buffer é o primeiro valor que o printf vai buscar.
 
 ```
     [12/04/21]seed@VM:~/.../CTF6.2$ ./program 
