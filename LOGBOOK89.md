@@ -56,6 +56,8 @@ abrindo o index.html no browser, obtemos:
 
 ### Tarefa 2.3
 
+Ataques de injeção SQL que pretendem correr várias queries não funcionam contra MySQL pois, na extensão mysqli no PHP, a mysqli::query() API não permite que várias queries sejam corridas no servidor da base de dados.
+
 ## Tarefa 3
 
 ### Tarefa 3.1
