@@ -103,3 +103,33 @@ O sql alterado ficará como o seguinte:
 ```
 
 ![info](images/boby_changed.png)
+
+
+
+# **CTF - Desafio 1**
+
+Para obter a flag basta inserir no username **admin';#**<br>
+Tal como explicado na tarefa 2.1,
+este input fará com que o que vem depois do '#' seja comentado, tornando qualquer condição verdadeira.
+
+![info](images/ctf1.png)
+
+O resultado é o seguinte:
+
+![info](images/flag1.png)
+
+# **CTF - Desafio 2**
+
+O servidor usa o nosso input para chamar a função ping, através de system(). 
+A chamada será parecida com a seguinte:
+``
+    system("ping -c 2" + input )
+``
+
+Usando "|" podemos utilizar cat para ver o conteúdo do ficheiro onde se encontra a flag.
+
+![info](images/ping.png)
+
+O resultado é o seguinte:
+
+![info](images/flag2.png)
