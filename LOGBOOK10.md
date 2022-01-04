@@ -69,7 +69,7 @@ window.onload = function () {
 </script>
 ```
 
-Quando um utilizador visita o perfil de Samy, é gerado o request para adicioná-lo aos amigos. O botão "Add friend" continua a aparecer, mas ao dar refresh este muda para "Remove friend".
+Quando um utilizador visita o perfil de Samy, é gerado o request para adicioná-lo aos amigos. O botão "Add friend" continua a aparecer, mas ao dar refresh este muda para "Remove friend", como esperado.
 
 
 ![before](images/before.png)
