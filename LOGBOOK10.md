@@ -5,8 +5,8 @@
 ## Tarefa 1
 
 Colocando o seguinte script javascript na brief description fazemos com que quem visite o nosso perfil receba um alert.
-![alert](alert_script.png)
-![alert](alert.png)
+![alert](images/alert_script.png)
+![alert](images/alert.png)
 
 
 
@@ -15,8 +15,8 @@ Colocando o seguinte script javascript na brief description fazemos com que quem
 
 Colocando o seguinte script javascript na brief description fazemos com que quem visite o nosso perfil receba um alert com as suas cookies.
 
-![cookie](cookie_script.png).png)
-![cookie](cookie.png)
+![cookie](images/cookie_script.png).png)
+![cookie](images/cookie.png)
 
 
 ## Tarefa 3
@@ -24,7 +24,7 @@ Colocando o seguinte script javascript na brief description fazemos com que quem
 
 
 Colocando o seguinte script javascript na brief description fazemos com que quem visite o nosso perfil envie as suas cookies para o endereço à nossa escolha.
-![alert](send_cookie.png).png)
+![alert](images/send_cookie.png).png)
 
 ```
 
@@ -72,11 +72,11 @@ window.onload = function () {
 Quando um utilizador visita o perfil de Samy, é gerado o request para adicioná-lo aos amigos. O botão "Add friend" continua a aparecer, mas ao dar refresh este muda para "Remove friend".
 
 
-![before](before.png)
+![before](images/before.png)
 
 
-![after](after.png)
+![after](images/after.png)
 
 Utilizando o HTTP Header Live podemos confirmar que o request está a ser gerado quando um utilizador entra no perfil de Samy, como pretendido.
 
-![req](request.png)
+![req](images/request.png)
