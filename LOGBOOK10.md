@@ -80,3 +80,15 @@ Quando um utilizador visita o perfil de Samy, é gerado o request para adicioná
 Utilizando o HTTP Header Live podemos confirmar que o request está a ser gerado quando um utilizador entra no perfil de Samy, como pretendido.
 
 ![req](images/request.png)
+
+# **CTF - Desafio 1**
+
+Após analisar a resposta do administrador ao pedido da flag, observou-se que seria possível utilizar um dos botões para obter a flag. 
+Para isso, colocou-se o seguinte script no formulário de submissão da justificação:
+
+```js
+<script>
+  document.getElementById("giveflag").click();
+</script>
+```
+
